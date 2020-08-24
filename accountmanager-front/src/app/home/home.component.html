@@ -1,0 +1,33 @@
+<h1>Customers <a class="btn btn-primary float-right" routerLink="/customer/new">Create Customer</a></h1>
+<div class="row">
+    <div class="col">
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col" class="text-right">Action</th>
+                </tr>
+                <tr *ngFor="let customer of customers$ | async">
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.surname }}</td>
+                    <td class="text-right">
+                        <a class="btn btn-primary" routerLink="/customers/{{ customer.id }}">View Customer</a>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+
+    </div>
+</div>

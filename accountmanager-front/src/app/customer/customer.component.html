@@ -1,0 +1,42 @@
+<div *ngIf="customer$">
+    <h1>Accounts & Transactions 
+        <a class="btn btn-primary float-right" routerLink="/customers/{{customer$.id}}/account/new">Create Account</a>
+    </h1>
+    <div class="alert alert-secondary">
+        Name: {{ customer$.name }} | Surname: {{ customer$.surname }} | Balance: {{ customer$.balance }}
+    </div>
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Balance</th>
+                        <th scope="col">Transactions</th>
+                    </tr>
+                    <tr scope="row" *ngFor="let account of customer$?.accounts">
+                        <td>{{ account.id }}</td>
+                        <td>{{ account.balance }}</td>
+                        <td>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                                <tr *ngFor="let transaction of account.transactions">
+                                    <td>{{ transaction.id }}</td>
+                                    <td>{{ transaction.amount }}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>

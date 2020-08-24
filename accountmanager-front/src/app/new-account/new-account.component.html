@@ -1,0 +1,27 @@
+<div *ngIf="customer$">
+    <h1>Create Account <a class="btn btn-primary float-right" routerLink="/customers/{{customer$.id}}">Back to Customer</a></h1>
+    <div class="alert alert-secondary">
+        <b>Customer Details:</b><br> Name: {{ customer$.name }} | Surname: {{ customer$.surname }} | Balance:
+        {{ customer$.balance || 0 | currency:'EUR' }}
+    </div>
+    <div *ngIf="success" class="alert alert-success" role="alert">
+        Account successfully created!
+    </div>
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+        Failed to create account! Please check that your backend services are working properly! Quarkus is working with
+        H2, it sometimes curupts tables and you will need to restart service!
+    </div>
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+        <div class="form-group">
+            <label for="balance">Balance</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">€</span>
+                </div>
+                <input type="number" class="form-control" ngModel name="balance" id="balance">
+                <input type="hidden" [(ngModel)]="customerId" name="customerId" id="customerId">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+<h1>Create Customer</h1>
+<div *ngIf="success" class="alert alert-success" role="alert">
+    Customer successfully created!
+</div>
+<div *ngIf="error" class="alert alert-danger" role="alert">
+    Failed to create customer! Please check that your backend services are working properly! Quarkus is working with H2, it sometimes curupts tables and you will need to restart service!
+</div>
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" ngModel>
+    </div>
+    <div class="form-group">
+        <label for="surname">Surname</label>
+        <input type="text" class="form-control" id="surname" name="surname" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
