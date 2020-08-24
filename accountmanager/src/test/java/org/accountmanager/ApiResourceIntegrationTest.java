@@ -12,6 +12,8 @@ import javax.json.JsonObject;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.not;
 
+import io.quarkus.test.h2.H2DatabaseTestResource;
+
 /**
  * Test Account Manager API Endpoints
  * 
@@ -20,6 +22,7 @@ import static org.hamcrest.CoreMatchers.not;
  * @since 24.08.2020
  */
 @QuarkusTest
+@QuarkusTestResource(H2DatabaseTestResource.class)
 public class ApiResourceIntegrationTest {
     
     //SUCCESS TEST: Create Customer
